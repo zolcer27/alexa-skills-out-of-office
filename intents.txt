@@ -1,0 +1,72 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "sinatra sampler",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "get help",
+                        "help",
+                        "help me",
+                        "can you help me"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetAFact",
+                    "slots": [],
+                    "samples": [
+                        "share a fact",
+                        "tell me something unusual",
+                        "tell me something interesting",
+                        "be random",
+                        "share a random fact"
+                    ]
+                },
+                {
+                    "name": "GetAGIF",
+                    "slots": [],
+                    "samples": [
+                        "share a picture",
+                        "Send me a Gif",
+                        "Share a gif",
+                        "Send a gif",
+                        "Send a gif please"
+                    ]
+                },
+                {
+                    "name": "GetJoke",
+                    "slots": [],
+                    "samples": [
+                        "tell me a joke",
+                        "send a joke",
+                        "share a joke",
+                        "make me laugh"
+                    ]
+                },
+                {
+                    "name": "GetWeather",
+                    "slots": [],
+                    "samples": [
+                        "Get me the weather",
+                        "what is the weather",
+                        "what's the weather like"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                }
+            ],
+            "types": []
+        }
+    }
+}

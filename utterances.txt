@@ -1,0 +1,12 @@
+IntentName What is said
+GetAGIF Send me a Gif
+GetAGIF Share a gif
+GetAGIF Send a gif
+GetAGIF Send a gif please
+GetWeather Get me the weather
+GetWeather what is the weather
+GetWeather what's the weather like
+GetJoke tell me a joke
+GetJoke send a joke
+GetJoke share a joke
+GetJoke make me laugh
