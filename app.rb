@@ -87,7 +87,37 @@ class CustomHandler < AlexaSkillsRuby::Handler
       logger.info 'Here processed'
   		# send a message to slack
       update_status "HERE"
-    end
+  end
+  on_intent("AMAZON.HelpIntent") do
+    response.set_output_speech_text("You can ask me to tell you the current out of office status by saying current status. You can update your stats by saying tell out of office i'll be right back, i've gone home, i'm busy, i'm here or i'll be back in 10 minutes")
+    logger.info 'HelpIntent processed'
+  end
+  on_intent("BACK_IN") do
+
+   # Access the slots
+   slots = request.intent.slots
+   puts slots.to_s
+
+   # Duration is returned in a particular format
+   # Called ISO8601. Translate this into seconds
+   duration = ISO8601::Duration.new( request.intent.slots["duration"] ).to_seconds
+
+   # This will downsample the duration from a default seconds
+   # To...
+   if duration > 60 * 60 * 24
+     days = duration/(60 * 60 * 24).round
+     response.set_output_speech_text("I've set you away for #{ days } days")
+   elsif duration > 60 * 60
+     hours = duration/(60 * 60 ).round
+     response.set_output_speech_text("I've set you away for #{ hours } hours")
+   else
+     mins = duration/(60).round
+     response.set_output_speech_text("I've set you away for #{ mins } minutes")
+   end
+   logger.info 'BackIn processed'
+   update_status "BACK_IN", duration
+ end
+end
 
   on_intent("About") do
 
