@@ -78,7 +78,16 @@ end
 
 
 class CustomHandler < AlexaSkillsRuby::Handler
-
+  on_intent("HERE") do
+  		# add a response to Alexa
+      response.set_output_speech_text("I've updated your status to Here ")
+  		# create a card response in the alexa app
+      response.set_simple_card("Out of Office App", "Status is in the office.")
+  		# log the output if needed
+      logger.info 'Here processed'
+  		# send a message to slack
+      update_status "HERE"
+    end
 
   on_intent("About") do
 
