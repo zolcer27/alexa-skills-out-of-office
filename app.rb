@@ -88,10 +88,40 @@ class CustomHandler < AlexaSkillsRuby::Handler
   		# send a message to slack
       update_status "HERE"
   end
-  on_intent("AMAZON.HelpIntent") do
-    response.set_output_speech_text("You can ask me to tell you the current out of office status by saying current status. You can update your stats by saying tell out of office i'll be right back, i've gone home, i'm busy, i'm here or i'll be back in 10 minutes")
-    logger.info 'HelpIntent processed'
-  end
+
+  on_intent("BE_RIGHT_BACK") do
+    		# add a response to Alexa
+        response.set_output_speech_text("I've updated your status to Be right back ")
+    		# create a card response in the alexa app
+        response.set_simple_card("Out_of_Office_Assistant", "Status is not in the office.")
+    		# log the output if needed
+        logger.info 'BeRightBack processed'
+    		# send a message to slack
+        update_status "BE_RIGHT_BACK"
+      end
+
+      on_intent("DO_NOT_DISTURB") do
+      		# add a response to Alexa
+          response.set_output_speech_text("I've updated your status to Do not disturb ")
+      		# create a card response in the alexa app
+          response.set_simple_card("Out_of_Office_Assistant", "Status is unavailable.")
+      		# log the output if needed
+          logger.info 'DoNotDisturb processed'
+      		# send a message to slack
+          update_status "DO_NOT_DISTURB"
+        end
+
+        on_intent("GONE_HOME") do
+        		# add a response to Alexa
+            response.set_output_speech_text("I've updated your status to Gone home ")
+        		# create a card response in the alexa app
+            response.set_simple_card("Out_of_Office_Assistant", "Status is not in the office.")
+        		# log the output if needed
+            logger.info 'GoneHome processed'
+        		# send a message to slack
+            update_status "GONE_HOME"
+          end
+
   on_intent("BACK_IN") do
 
    # Access the slots
@@ -117,7 +147,6 @@ class CustomHandler < AlexaSkillsRuby::Handler
    logger.info 'BackIn processed'
    update_status "BACK_IN", duration
  end
-end
 
   on_intent("About") do
 
@@ -126,8 +155,6 @@ end
     logger.info 'GetAGIF processed'
 
   end
-
-
 
   on_intent("GetAGIF") do
     #response.set_output_speech('I sent a GIF to your phone! You should receive it really soon')
@@ -179,8 +206,6 @@ end
     response.set_output_speech_text("You can ask me to send you a gif, get the weather, tell a joke or share a fact.")
     logger.info 'AMAZON.HelpIntent processed'
   end
-
-
 end
 
 # ----------------------------------------------------------------------
