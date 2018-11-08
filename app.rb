@@ -78,7 +78,8 @@ end
 
 
 class CustomHandler < AlexaSkillsRuby::Handler
-  on_intent("HERE") do
+
+    on_intent("HERE") do
   		# add a response to Alexa
       response.set_output_speech_text("I've updated your status to Here ")
   		# create a card response in the alexa app
@@ -87,8 +88,8 @@ class CustomHandler < AlexaSkillsRuby::Handler
       logger.info 'Here processed'
   		# send a message to slack
       update_status "HERE"
-  end
-
+    end
+    
   on_intent("BE_RIGHT_BACK") do
     		# add a response to Alexa
         response.set_output_speech_text("I've updated your status to Be right back ")
